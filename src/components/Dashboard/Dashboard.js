@@ -1,128 +1,190 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./Dashboard.css";
 
-import { Button } from "primereact/button";
-import { TabView, TabPanel } from "primereact/tabview";
-import { Toast } from "primereact/toast";
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
-import { FloatLabel } from "primereact/floatlabel";
-import { RadioButton } from "primereact/radiobutton";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
+import {
+  CButton,
+  CAlert,
+  CTabs,
+  CTabList,
+  CTab,
+  CTabContent,
+  CTabPanel,
+  CContainer,
+  CForm,
+  CCol,
+  CFormInput,
+  CFormLabel,
+  CInputGroup,
+  CInputGroupText,
+  CFormCheck,
+  CFormFeedback,
+  CTable,
+} from "@coreui/react";
 
 function Dashboard() {
-  const toast = useRef(null);
+  const [visible, setVisible] = useState(false);
 
-  const show = () => {
-    toast.current.show({
-      severity: "info",
-      summary: "Info",
-      detail: "Message Content",
-    });
+  const [validated, setValidated] = useState(false);
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
   };
 
-  const [value, setValue] = useState("");
-  const [gender, setGender] = useState("");
-
-  const [products, setProducts] = useState([
-    { id: 1, name: "John Doe", email: "john@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com" },
-    { id: 3, name: "Michael Brown", email: "michael@example.com" },
-  ]);
+  const columns = [
+    {
+      key: "id",
+      label: "#",
+      _props: { scope: "col" },
+    },
+    {
+      key: "class",
+      _props: { scope: "col" },
+    },
+    {
+      key: "heading_1",
+      label: "Heading",
+      _props: { scope: "col" },
+    },
+    {
+      key: "heading_2",
+      label: "User",
+      _props: { scope: "col" },
+    },
+  ];
+  const items = [
+    {
+      id: 1,
+      class: "Mark",
+      heading_1: "Otto",
+      heading_2: "@mdo",
+      _cellProps: { id: { scope: "row" } },
+    },
+    {
+      id: 2,
+      class: "Jacob",
+      heading_1: "Thornton",
+      heading_2: "@fat",
+      _cellProps: { id: { scope: "row" } },
+    },
+    {
+      id: 3,
+      class: "Larry the Bird",
+      heading_2: "@twitter",
+      _cellProps: { id: { scope: "row" }, class: { colSpan: 2 } },
+    },
+  ];
   return (
     <div className="App ">
-      <div className="grid">
-        <div className="col-6 col-offset-3  ">
-          <div className=" flex justify-content-center mb-4  ">
-            <h2>Prime React</h2>
-          </div>
-          {/* Demo Tabs */}
-          <div className="mb-5 flex justify-content-center ">
-            <TabView className="mb-5 w-full ">
-              {/* Demo Button and Alert */}
-              <TabPanel header="BUTTON">
-                <Toast ref={toast} />
-                <Button onClick={show} label="Show Alert" />
-              </TabPanel>
-              <TabPanel header="FORM">
-                <div className="card flex flex-column gap-3">
-                  <div className="card ">
-                    <div
-                      className="flex flex-column gap-2 mb-3 "
-                      style={{ width: "215px" }}
-                    >
-                      <label htmlFor="username">Username</label>
-                      <InputText
-                        id="username"
-                        aria-describedby="username-help"
-                        style={{ width: "100%" }}
-                      />
-                    </div>
-                    <div
-                      className="flex flex-column gap-2 mb-3 "
-                      style={{ width: "300px" }}
-                    >
-                      <label htmlFor="password">Password</label>
-                      <FloatLabel>
-                        <Password
-                          inputId="password"
-                          value={value}
-                          onChange={(e) => setValue(e.target.value)}
-                          style={{ width: "100%" }}
-                        />
-                        <label htmlFor="password">Password</label>
-                      </FloatLabel>
-                    </div>
-                    <div className="flex flex-column gap-2 mb-3">
-                      <label htmlFor="username">Gender</label>
-                      <div className="flex align-items-center">
-                        <RadioButton
-                          inputId="gender1"
-                          name="Male"
-                          value="Male"
-                          onChange={(e) => setGender(e.value)}
-                          checked={gender === "Male"}
-                        />
-                        <label htmlFor="gender1" className="ml-2">
-                          Male
-                        </label>
-                      </div>
-                      <div className="flex align-items-center">
-                        <RadioButton
-                          inputId="gender2"
-                          name="Female"
-                          value="Female"
-                          onChange={(e) => setGender(e.value)}
-                          checked={gender === "Female"}
-                        />
-                        <label htmlFor="gender2" className="ml-2">
-                          Female
-                        </label>
-                      </div>
-                    </div>
-                    <div className="card flex justify-content-center">
-                      <Button label="Submit" />
-                    </div>
-                  </div>
-                </div>
-              </TabPanel>
-              <TabPanel header="TABLE">
-                <div className="card">
-                  <DataTable
-                    value={products}
-                    tableStyle={{ minWidth: "50rem" }}
-                  >
-                    <Column field="id" header="Id"></Column>
-                    <Column field="name" header="Name"></Column>
-                    <Column field="email" header="Email"></Column>
-                  </DataTable>
-                </div>
-              </TabPanel>
-            </TabView>
-          </div>
+      <CContainer>
+        <div className="d-flex justify-content-center">
+          <h2>CoreUI React</h2>
         </div>
-      </div>
+        <CTabs activeItemKey="button">
+          <CTabList variant="tabs">
+            <CTab itemKey="button">Button</CTab>
+            <CTab itemKey="form">Form</CTab>
+            <CTab itemKey="table">Table</CTab>
+          </CTabList>
+          <CTabContent>
+            <CTabPanel className="p-3" itemKey="button">
+              <CAlert
+                color="primary"
+                dismissible
+                visible={visible}
+                onClose={() => setVisible(false)}
+              >
+                A simple primary alert—check it out!
+              </CAlert>
+              <CButton color="primary" onClick={() => setVisible(true)}>
+                Show live alert
+              </CButton>
+            </CTabPanel>
+            <CTabPanel className="p-3" itemKey="form">
+              <CForm
+                className="row g-3 needs-validation"
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+              >
+                <CCol md={4}>
+                  <CFormInput
+                    type="text"
+                    id="validationCustom01"
+                    label="First name"
+                    required
+                  />
+                </CCol>
+                <CCol md={4}>
+                  <CFormInput
+                    type="text"
+                    id="validationCustom02"
+                    label="Last name"
+                    required
+                  />
+                </CCol>
+                <CCol md={4}>
+                  <CFormLabel htmlFor="validationCustomUsername">
+                    Username
+                  </CFormLabel>
+                  <CInputGroup className="has-validation">
+                    <CInputGroupText>@</CInputGroupText>
+                    <CFormInput
+                      type="text"
+                      aria-describedby="inputGroupPrependFeedback"
+                      feedbackValid="Please choose a username."
+                      id="validationCustomUsername"
+                      required
+                    />
+                  </CInputGroup>
+                </CCol>
+                <CCol md={6}>
+                  <CFormInput
+                    type="text"
+                    aria-describedby="validationCustom03Feedback"
+                    feedbackInvalid="Please provide a valid city."
+                    id="validationCustom03"
+                    label="City"
+                    required
+                  />
+                </CCol>
+                <CCol md={3}>
+                  <CFormInput
+                    type="text"
+                    aria-describedby="validationCustom05Feedback"
+                    feedbackInvalid="Please provide a valid zip."
+                    id="validationCustom05"
+                    label="Zip"
+                    required
+                  />
+                </CCol>
+                <CCol xs={12}>
+                  <CFormCheck
+                    type="checkbox"
+                    id="invalidCheck"
+                    label="Agree to terms and conditions"
+                    required
+                  />
+                  <CFormFeedback invalid>
+                    You must agree before submitting.
+                  </CFormFeedback>
+                </CCol>
+                <CCol xs={12}>
+                  <CButton color="primary" type="submit">
+                    Submit form
+                  </CButton>
+                </CCol>
+              </CForm>
+            </CTabPanel>
+            <CTabPanel className="p-3" itemKey="table">
+              <CTable striped hover columns={columns} items={items} />
+            </CTabPanel>
+          </CTabContent>
+        </CTabs>
+      </CContainer>
     </div>
   );
 }
