@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 
 import {
@@ -14,7 +14,7 @@ import {
 function Dashboard() {
   const [visible, setVisible] = useState(false);
   const [image, setImage] = useState([]);
-  const [showImage, setShowImage] = useState(false);
+  const [showImage, setShowImage] = useState(null);
 
   const handleImgChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
