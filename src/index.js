@@ -3,8 +3,27 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// import "bootstrap/dist/css/bootstrap.min.css";
+import language_en from "../src/pages/translate/en/translation.json";
+import language_vi from "../src/pages/translate/vi/translation.json";
+
+import { I18nextProvider } from "react-i18next";
+import i18next from "i18next";
+
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "vi",
+  resources: {
+    vi: {
+      translate: language_vi,
+    },
+    en: {
+      translate: language_en,
+    },
+  },
+});
+
 // import "primereact/resources/themes/lara-light-cyan/theme.css"; // Chọn theme
 // import "primereact/resources/primereact.min.css"; // PrimeReact CSS
 // import "primeicons/primeicons.css";
@@ -12,13 +31,15 @@ import reportWebVitals from "./reportWebVitals";
 
 // import "@coreui/coreui/dist/css/coreui.min.css";
 
-import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import { ThemeProvider } from "@mui/material/styles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <I18nextProvider i18n={i18next}>
+      <App />
+    </I18nextProvider>
   </React.StrictMode>
 );
 
