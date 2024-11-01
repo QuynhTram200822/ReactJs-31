@@ -1,9 +1,9 @@
 // App.js
 import React from "react";
-import Dashboard from "../components/Dashboard/Dashboard";
+import PageB from "../components/PageB/PageB";
 
 function IndexPage() {
-  return <Dashboard />;
+  return <PageB />;
 }
 
 export default IndexPage;

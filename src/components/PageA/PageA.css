@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* color: #3c4b64; */
-  color: white !important;
+  color: #3c4b64;
+  /* color: white !important; */
   background-color: #ebedef;
 }
 .container {
