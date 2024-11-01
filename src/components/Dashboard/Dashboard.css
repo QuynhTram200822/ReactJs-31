@@ -1,17 +1,16 @@
 .App {
-  /* text-align: center; */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* align-items: center; */
+  text-align: center;
+  display: flex;
+  /* flex-direction: row;  */
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  color: #3c4b64;
+  /* color: #3c4b64; */
+  color: white !important;
   background-color: #ebedef;
 }
 .container {
   /* max-width: 1320px; */
-}
-.card {
-  border: none !important;
 }
 
 @media (min-width: 1400px) {
