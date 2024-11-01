@@ -10,7 +10,10 @@ import reportWebVitals from "./reportWebVitals";
 // import "primeicons/primeicons.css";
 // import "primeflex/primeflex.css";
 
-import "@coreui/coreui/dist/css/coreui.min.css";
+// import "@coreui/coreui/dist/css/coreui.min.css";
+
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
