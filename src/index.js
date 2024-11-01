@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "@coreui/coreui/dist/css/coreui.min.css";
 
-import language_en from "../src/pages/translate/en/translation.json";
-import language_vi from "../src/pages/translate/vi/translation.json";
+import language_en from "../src/public/locales/en/translation.json";
+import language_vi from "../src/public/locales/vi/translation.json";
 
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
@@ -28,8 +29,6 @@ i18next.init({
 // import "primereact/resources/primereact.min.css"; // PrimeReact CSS
 // import "primeicons/primeicons.css";
 // import "primeflex/primeflex.css";
-
-// import "@coreui/coreui/dist/css/coreui.min.css";
 
 // import CssBaseline from "@mui/material/CssBaseline";
 // import { ThemeProvider } from "@mui/material/styles";

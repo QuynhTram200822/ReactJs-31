@@ -1,8 +1,8 @@
 import React from "react";
 import "./Dashboard.css";
 
-import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
+import { CFormSelect } from "@coreui/react";
 
 function Dashboard() {
   const { t, i18n } = useTranslation("translate");
@@ -16,10 +16,10 @@ function Dashboard() {
     <div className="App ">
       <p className=" text-center ">{t("home.label")}</p>
       <div className="w-25 ">
-        <Form.Select onChange={handleChangeLanguage}>
+        <CFormSelect onChange={handleChangeLanguage}>
           <option value="vi">VietNam</option>
           <option value="en">English</option>
-        </Form.Select>
+        </CFormSelect>
       </div>
     </div>
   );
