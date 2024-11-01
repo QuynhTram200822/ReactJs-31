@@ -96,9 +96,9 @@ function Dashboard() {
 
   return (
     <div className="App ">
-      <div sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <h2>CoreUI React</h2>
-      </div>
+      </Box>
       <div>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={value}>
