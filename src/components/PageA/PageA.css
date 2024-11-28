@@ -8,9 +8,26 @@
   color: #3c4b64;
   /* color: white !important; */
   background-color: #ebedef;
+ 
 }
 .container {
   /* max-width: 1320px; */
+}
+
+.Img-container{
+width: 150px;
+height: 200px;
+margin: 10px;
+overflow: hidden;
+position: relative; 
+}
+
+.Img-container img{
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-position: center; 
+  /* position: absolute; */
 }
 
 @media (min-width: 1400px) {
